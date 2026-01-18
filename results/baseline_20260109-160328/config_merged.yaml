@@ -1,0 +1,38 @@
+project:
+  name: TheModel
+  experiment: baseline
+  seed: 42
+paths:
+  results_dir: results
+numerics:
+  backend: numpy
+  dtype: float64
+  device: cpu
+graph:
+  type: small_world
+  nodes: 128
+  parameters:
+    k: 6
+    p: 0.1
+operators:
+  laplacian: normalized
+  weighted: true
+dynamics:
+  system: reaction_diffusion
+  time:
+    t0: 0.0
+    t_end: 10.0
+    dt: 0.01
+nonlinear:
+  type: cubic
+  parameters:
+    alpha: 1.0
+    beta: -0.5
+quantum:
+  formulation: schrodinger
+  hbar: 1.0
+initial_state:
+  type: gaussian
+  parameters:
+    mean: 0.0
+    std: 0.1

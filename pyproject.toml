@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-project"
+version = "0.1.0"
+description = "Quantum-inspired models, graph dynamics, and nonlinear systems framework."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Marco Dominietto" }]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pyyaml>=6.0.1",
+  "matplotlib>=3.8",
+  "networkx>=3.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+docs = [
+  "sphinx>=7.2",
+  "sphinx-rtd-theme>=2.0",
+  "myst-parser>=2.0",
+  "sphinx-autodoc-typehints>=2.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
